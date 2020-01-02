@@ -25,6 +25,8 @@ class ProtectedLocations extends React.Component {
                 <Text>{obj.locName}</Text>
                 <Text> | </Text>
                 <Text>{obj.locAdress}</Text>
+                <Text> | </Text>
+                <Text>{obj.status}</Text>
             </View>
         )
     }
@@ -36,6 +38,7 @@ class ProtectedLocations extends React.Component {
                     guardsLocation: [...this.state.guardsLocation, {
                         'locId': doc.data().locationUID,
                         'userId': doc.data().userUID,
+                        'status': doc.data().status,
                         'userName': '',
                         'locName': '',
                         'locAdress': '',
@@ -90,7 +93,7 @@ class ProtectedLocations extends React.Component {
                 <Text style={styles.title}>Logs</Text>
                 <View style={styles.fromTop}>
                     <View style={styles.containerBox2}>
-                        <Text style={styles.secondTitle}>Guard Name | Object name | Adress</Text>
+                        <Text style={styles.secondTitle}>Guard Name | Object name | Adress | Status</Text>
                     </View>
                     {this.state.guardsLocation.map(item => this.renderItem(item))}
                 </View>
